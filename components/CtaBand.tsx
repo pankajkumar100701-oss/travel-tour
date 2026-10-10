@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { img } from "@/lib/data";
-import { whatsappLink } from "@/lib/site";
+import { site, whatsappLink } from "@/lib/site";
 import { ArrowRight, WhatsApp } from "./icons";
 
 export function CtaBand() {
@@ -21,6 +21,7 @@ export function CtaBand() {
             <Link href="/contact" className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5 font-semibold transition-colors hover:bg-accent-deep">
               Get a free itinerary <ArrowRight className="size-4" />
             </Link>
+            {site.whatsapp && (
             <a
               href={whatsappLink("Hi! I'd like help planning a trip.")}
               target="_blank"
@@ -29,6 +30,7 @@ export function CtaBand() {
             >
               <WhatsApp className="size-5" /> Chat on WhatsApp
             </a>
+            )}
           </div>
         </div>
       </div>

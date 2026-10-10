@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { destinations } from "@/lib/data";
-import { nav, site } from "@/lib/site";
+import { nav, phoneHref, site } from "@/lib/site";
 import { Logo, Mail, MapPin, Phone } from "./icons";
 import { Newsletter } from "./Newsletter";
 
@@ -52,11 +52,13 @@ export function SiteFooter() {
         <div className="md:col-span-3">
           <h3 className="text-sm font-semibold">Talk to us</h3>
           <ul className="mt-4 space-y-3 text-sm text-white/65">
+            {site.phone && (
             <li>
-              <a href={site.phoneHref} className="flex gap-3 hover:text-white">
+              <a href={phoneHref} className="flex gap-3 hover:text-white">
                 <Phone className="mt-0.5 size-4 shrink-0" /> {site.phone}
               </a>
             </li>
+            )}
             <li>
               <a href={`mailto:${site.email}`} className="flex gap-3 break-all hover:text-white">
                 <Mail className="mt-0.5 size-4 shrink-0" /> {site.email}

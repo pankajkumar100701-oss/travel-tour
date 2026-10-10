@@ -1,7 +1,8 @@
-import { whatsappLink } from "@/lib/site";
+import { site, whatsappLink } from "@/lib/site";
 import { WhatsApp } from "./icons";
 
 export function WhatsAppFab() {
+  if (!site.whatsapp) return null;
   return (
     <a
       href={whatsappLink("Hi! I found you on your website and want to plan a trip.")}

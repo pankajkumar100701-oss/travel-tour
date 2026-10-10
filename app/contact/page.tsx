@@ -3,7 +3,7 @@ import { EnquiryForm } from "@/components/EnquiryForm";
 import { Faq } from "@/components/Faq";
 import { Clock, Mail, MapPin, Phone, WhatsApp } from "@/components/icons";
 import { Accent, PageHero, SectionHeading } from "@/components/ui";
-import { site, whatsappLink } from "@/lib/site";
+import { phoneHref, site, whatsappLink } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Plan your trip",
@@ -12,10 +12,10 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   const channels = [
-    { icon: WhatsApp, label: "WhatsApp", value: "Fastest reply", href: whatsappLink("Hi! I'd like to plan a trip.") },
-    { icon: Phone, label: "Call us", value: site.phone, href: site.phoneHref },
+    site.whatsapp && { icon: WhatsApp, label: "WhatsApp", value: "Fastest reply", href: whatsappLink("Hi! I'd like to plan a trip.") },
+    site.phone && { icon: Phone, label: "Call us", value: site.phone, href: phoneHref },
     { icon: Mail, label: "Email", value: site.email, href: `mailto:${site.email}` },
-  ];
+  ].filter((c) => !!c);
 
   return (
     <>

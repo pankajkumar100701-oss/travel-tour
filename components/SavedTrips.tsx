@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { getPackage } from "@/lib/data";
 import { recent, wishlist } from "@/lib/store";
-import { whatsappLink } from "@/lib/site";
+import { site, whatsappLink } from "@/lib/site";
 import { Heart, Trash, WhatsApp } from "./icons";
 import { PackageCard } from "./PackageCard";
 import { SectionHeading } from "./ui";
@@ -29,9 +29,11 @@ export function SavedTrips() {
       <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
         <p className="text-muted"><span className="font-semibold text-ink">{items.length}</span> saved {items.length === 1 ? "trip" : "trips"}</p>
         <div className="flex gap-2">
+          {site.whatsapp && (
           <a href={whatsappLink(message)} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-semibold text-white">
             <WhatsApp className="size-4" /> Ask about my shortlist
           </a>
+          )}
           <button type="button" onClick={wishlist.clear} className="flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold ring-1 ring-line hover:bg-card">
             <Trash className="size-4" /> Clear
           </button>

@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { departuresFor, formatDate, isInternational, type TourPackage } from "@/lib/data";
-import { formatPrice, site, whatsappLink } from "@/lib/site";
+import { formatPrice, phoneHref, site, whatsappLink } from "@/lib/site";
 import { recent } from "@/lib/store";
 import { WishlistButton } from "./CardActions";
 import { EnquiryForm } from "./EnquiryForm";
@@ -262,10 +262,14 @@ export function BookingCard() {
       <div className="mt-5">
         <EnquiryForm packageTitle={pkg.title} compact details={details} travellers={String(adults + kids)} hideDate={Boolean(departure)} />
       </div>
-      <div className="mt-5 grid grid-cols-2 gap-2 border-t border-line pt-5 text-sm font-semibold">
-        <a href={site.phoneHref} className="flex items-center justify-center gap-2 rounded-full py-2.5 ring-1 ring-line hover:bg-paper">
+      {(site.phone || site.whatsapp) && (
+      <div className={`mt-5 grid gap-2 border-t border-line pt-5 text-sm font-semibold ${site.phone && site.whatsapp ? "grid-cols-2" : ""}`}>
+        {site.phone && (
+        <a href={phoneHref} className="flex items-center justify-center gap-2 rounded-full py-2.5 ring-1 ring-line hover:bg-paper">
           <Phone className="size-4" /> Call
         </a>
+        )}
+        {site.whatsapp && (
         <a
           href={whatsappLink([`Hi! I'm interested in the ${pkg.title} package.`, ...details].join("\n"))}
           target="_blank"
@@ -274,7 +278,9 @@ export function BookingCard() {
         >
           <WhatsApp className="size-4 text-[#25D366]" /> WhatsApp
         </a>
+        )}
       </div>
+      )}
     </div>
   );
 }

@@ -30,7 +30,7 @@ Saved trips, compare list, recently viewed and packing ticks are stored in the v
 
 ## Editing content
 
-- Brand name, phone, WhatsApp, email, address: `lib/site.ts` (current values are demo placeholders)
+- Brand name, phone, WhatsApp, email, address: `lib/site.ts` (phone and WhatsApp are empty, so call/WhatsApp buttons are hidden until you fill them; email and address are demo placeholders)
 - Destinations, packages, reviews, FAQs: `lib/data.ts`
 - Colours and fonts: `app/globals.css` and `app/layout.tsx`
 

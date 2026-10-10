@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { destinations } from "@/lib/data";
-import { whatsappLink } from "@/lib/site";
+import { site, whatsappLink } from "@/lib/site";
 import { Check, WhatsApp } from "./icons";
 
 const input =
@@ -32,7 +32,8 @@ export function EnquiryForm({
           <Check className="size-7" />
         </span>
         <h3 className="mt-4 text-xl font-bold">Request received!</h3>
-        <p className="mt-2 text-sm leading-relaxed text-muted">A trip designer will call you within a few working hours. Want a faster reply?</p>
+        <p className="mt-2 text-sm leading-relaxed text-muted">A trip designer will call you within a few working hours.{site.whatsapp && " Want a faster reply?"}</p>
+        {site.whatsapp && (
         <a
           href={whatsappLink(sent)}
           target="_blank"
@@ -41,6 +42,7 @@ export function EnquiryForm({
         >
           <WhatsApp className="size-5" /> Send on WhatsApp
         </a>
+        )}
         <button type="button" onClick={() => setSent(null)} className="mt-3 block w-full text-sm text-muted underline-offset-4 hover:underline">
           Send another request
         </button>

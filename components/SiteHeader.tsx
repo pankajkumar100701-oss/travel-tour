@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { nav, site } from "@/lib/site";
+import { nav, phoneHref, site } from "@/lib/site";
 import { wishlist } from "@/lib/store";
 import { Heart, Logo, Menu, Phone, X } from "./icons";
 
@@ -58,9 +58,11 @@ export function SiteHeader() {
         </nav>
 
         <div className="ml-auto flex items-center gap-1 lg:ml-0 lg:gap-3">
-          <a href={site.phoneHref} className="hidden items-center gap-2 text-sm font-medium text-ink/75 hover:text-ink xl:flex">
+          {site.phone && (
+          <a href={phoneHref} className="hidden items-center gap-2 text-sm font-medium text-ink/75 hover:text-ink xl:flex">
             <Phone className="size-4" /> {site.phone}
           </a>
+          )}
           <SavedLink onClick={() => setOpen(false)} />
           <Link
             href="/contact"
@@ -101,9 +103,11 @@ export function SiteHeader() {
             >
               Plan my trip
             </Link>
-            <a href={site.phoneHref} className="mt-3 flex items-center justify-center gap-2 py-2 text-muted">
+            {site.phone && (
+            <a href={phoneHref} className="mt-3 flex items-center justify-center gap-2 py-2 text-muted">
               <Phone className="size-4" /> {site.phone}
             </a>
+            )}
           </nav>
         </div>
       )}

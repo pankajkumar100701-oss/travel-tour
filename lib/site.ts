@@ -1,13 +1,13 @@
-/** Brand and contact details live here so a rename touches one file. Contact details are demo placeholders. */
+/** Brand and contact details live here so a rename touches one file. Email and address are demo placeholders. */
 export const site = {
   name: "Safarnama",
   suffix: "Journeys",
   tagline: "Trips planned like a friend would plan them.",
   description:
     "Handcrafted holidays across India and abroad — Ladakh to the Maldives — with honest pricing, local guides and a real person on call for the whole trip.",
-  phone: "+91 98765 43210",
-  phoneHref: "tel:+919876543210",
-  whatsapp: "919876543210",
+  /** Leave phone/whatsapp empty to hide every call and WhatsApp button. whatsapp is digits only, e.g. "919812345678". */
+  phone: "",
+  whatsapp: "",
   email: "hello@safarnama.example",
   address: "2nd Floor, Mall Road, Shimla, Himachal Pradesh 171001",
   hours: "Mon – Sat, 9:30 am – 7:30 pm",
@@ -26,6 +26,8 @@ export const nav = [
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ] as const;
+
+export const phoneHref = `tel:${site.phone.replace(/[^\d+]/g, "")}`;
 
 export function whatsappLink(message: string) {
   return `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(message)}`;

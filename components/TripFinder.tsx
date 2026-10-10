@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { getDestination, packages, type Category, type TourPackage } from "@/lib/data";
-import { whatsappLink } from "@/lib/site";
+import { site, whatsappLink } from "@/lib/site";
 import { ArrowRight, Sparkles, WhatsApp } from "./icons";
 import { PackageCard } from "./PackageCard";
 
@@ -108,6 +108,7 @@ export function TripFinder() {
             </div>
           ))}
         </div>
+        {site.whatsapp && (
         <div className="mt-10 flex flex-col items-start gap-4 rounded-3xl bg-ink p-6 text-white sm:flex-row sm:items-center sm:justify-between sm:p-8">
           <p className="text-lg">Not quite right? Send your answers and a trip designer will build a custom plan.</p>
           <a
@@ -119,6 +120,7 @@ export function TripFinder() {
             <WhatsApp className="size-5" /> Send my answers
           </a>
         </div>
+        )}
       </div>
     );
   }
